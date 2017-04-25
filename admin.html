@@ -1,15 +1,33 @@
 <!DOCTYPE HTML>
-
 <head>
 	<title>Movies Store Website</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" />
-	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src = "js/index.js" ></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#load').click(function(){
+				$.ajax({
+					type: 'post',
+					url: 'addMovie.php'
+					success: function (response)
+					{
+						if(response === "true")
+						{
+							alert("success");
+						}
+						else {
+							alert("Fail");
+						}
+					}
+				});
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -29,7 +47,7 @@
 						<li id="login1"><a href="php/login.php">Login</a></li>
 						<!--<li><a href="preview.html">Delivery</a></li>-->
 						<li id="checkout"><a href="php/show_cart.php">Checkout</a></li>
-						<li id="logout"><a href=# onclick="removeUser()">Logout</a></li>
+						<li id="logout"><a href="php/show_cart.php">My Account</a></li>
 					</ul>
 				</div>
 				<div class="clear"></div>
@@ -47,9 +65,9 @@
 						</a>
 					</div>
 					<!--<div class="search_box">-->
-					<!--<form>-->
-					<!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">-->
-					<!--</form>-->
+						<!--<form>-->
+							<!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">-->
+						<!--</form>-->
 					<!--</div>-->
 					<div class="clear"></div>
 				</div>
@@ -64,7 +82,7 @@
 					<div class="col span_2_of_3">
 						<div class="contact-form">
 							<h2>Update Movies Database</h2>
-							<form method="post" name="form" action="addMovie.php" enctype="multipart/form-data">
+							<form method="post" name="form" enctype="multipart/form-data">
 								<div class="form-group">
 									<span><label>Movie Name</label></span>
 									<span><input name="movieName" type="text" class="textbox" id="movieName"></span>

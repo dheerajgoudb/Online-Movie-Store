@@ -21,7 +21,7 @@
 				{
 					$.ajax({
 						type: 'post',
-						url: 'php/checkuser.php',
+						url: 'checkuser.php',
 						data: {
 							user_name: username
 						},

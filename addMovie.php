@@ -19,31 +19,28 @@ if (!empty($moviename) && !empty($category) && !empty($image) && !empty($year) &
   {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file))
     {
-      $conn = mysqli_connect("localhost", "root", "root", "movie_store");
-      if (!$conn)
-      {
-        die("Connection Failed: " . mysqli_connect_error());
-      }
-      else {
-        $sql = "INSERT INTO `movies` (`Name`, `Category`, `Img_url`, `Year`, `Cost`, `Description`, `movie_flag`) VALUES
-                  ('$moviename', '$Category', '$image', '$year', '$cost', '$description', '$movieflag')";
-        $result = mysqli_query($conn, $sql);
-        if ($result)
-        {
-          echo "Successfully movie added to database.";
-        }
-      }
+      // $conn = mysqli_connect("localhost", "root", "root", "movie_store");
+      // if (!$conn)
+      // {
+      //   die("Connection Failed: " . mysqli_connect_error());
+      // }
+      // else {
+      //   $sql = "INSERT INTO `movies` (`Name`, `Category`, `Img_url`, `Year`, `Cost`, `Description`, `movie_flag`) VALUES
+      //             ('$moviename', '$Category', '$image', '$year', '$cost', '$description', '$movieflag')";
+      //   $result = mysqli_query($conn, $sql);
+      //   if ($result)
+      //   {
+      //     echo "true";
+      //   }
+      // }
+      echo "true";
     }
   }
   else {
-    echo "Image not uploaded correctly.";
+    echo "false";
   }
 }
 else {
-  $message = "All the input fields must be entered.";
-  echo "<script type='text/javascript'>
-			alert('$message');
-			window.location.href = 'admin.html';
-		</script>";
+  echo "false";
 }
 ?>
